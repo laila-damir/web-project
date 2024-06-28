@@ -1,0 +1,369 @@
+.page {
+    height: 1332px;
+    background-image: url("../../assets/background.jpg");
+    background-size: cover;
+}
+
+.Navbar {
+    display: flex;
+    justify-content: space-around;
+}
+
+.back-section {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.back {
+    max-width: 100%;
+    height: auto;
+}
+
+.nav-logo {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbar-items {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    font-family: 'Rubik', sans-serif;
+}
+
+.navbar-items > li {
+    list-style-type: none;
+}
+
+.navbar-links {
+    text-decoration: none;
+    color: black;
+    font-size: 15px;
+}
+
+.navbar-links:hover {
+    color: #5BC17F;
+}
+
+.mobile-navbar {
+    display: none;
+}
+
+.hamb-icon {
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    display: none;
+}
+
+.hamb-icon:hover {
+    color: #0cc2ea;
+}
+
+/* Mobile NavBar */
+.mobile-navbar {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -100%;
+    background-color: white;
+    z-index: 20;
+    justify-content: center;
+    align-items: center;
+    transition: left .5s ease-in-out;
+}
+
+.mobile-navbar-close {
+    position: absolute;
+    top: 28px;
+    right: 28px;
+}
+
+.mobile-navbar-close .hamb-icon:hover {
+    color: rgb(255, 22, 22);
+}
+
+.open-nav {
+    left: 0;
+}
+
+.mobile-navbar-links {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    font-size: 24px;
+    gap: 24px;
+    text-align: center;
+}
+
+.mobile-navbar-links li a {
+    text-decoration: none;
+    color: black;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    letter-spacing: .8px;
+    transition: color .3s ease-in-out;
+}
+
+.mobile-navbar-links li a:hover {
+    color: #0cc2ea;
+}
+
+/* Responsive */
+@media screen and (max-width: 900px) {
+    .navbar-btn, .navbar-items {
+        display: none;
+    }
+    .mobile-nav {
+        display: block;
+    }
+    .hamb-icon {
+        display: block;
+    }
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 50px;
+    color: #404040;
+    font-size: 15px;
+}
+
+.nav-menu li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.nav-menu a {
+    color: #5BC17F;
+    text-decoration: none;
+}
+
+.nav-login-cart {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-login-cart button {
+    width: 100px;
+    height: 40px;
+    outline: none;
+    margin-left: 40px;
+    border: 1px white;
+    border-radius: 75px;
+    color: white;
+    font-size: 13px;
+    font-weight: 500;
+    background-color: #5BC17F;
+}
+
+.nav-Start-Volunteeing button {
+    width: 170px;
+    height: 45px;
+    outline: none;
+    border: 1px white;
+    border-radius: 65px;
+    color: white;
+    font-size: 14px;
+    background-color: #5BC17F;
+    margin-top: 30px;
+}
+
+.nav-login-cart button:active {
+    color: #5BC17F;
+    background-color: white;
+    border: 2px solid #5BC17F;
+}
+
+.nav-login-cart button:hover {
+    color: #5BC17F;
+    background-color: white;
+    border: 2px solid #5BC17F;
+}
+
+.nav-Start-Volunteeing button:hover {
+    color: #5BC17F;
+    background-color: white;
+    border: 2px solid #5BC17F;
+}
+
+.centre {
+    display: flex;
+    margin-top: 40px;
+    justify-content: center;
+    gap: 150px;
+}
+
+.texte {
+    height: 200px;
+    padding-left: 250px;
+    width: 35%;
+}
+
+.texte h1 {
+    font-size: 40px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 55px;
+    letter-spacing: 2px; /* Increase spacing between letters by 2px */
+}
+
+.text {
+    font-size: 15px;
+    margin-top: -10px;
+}
+
+.nav-pic {
+    width: 75%;
+}
+
+.nav-pic img {
+    width: 100%;
+    object-fit: cover;
+    box-shadow: 5px 5px 5px #616161;
+    margin-top: 5%;
+}
+
+.nav-pic p {
+    width: 25%;
+}
+.nav-pic p {
+    width: 25%;
+    color: #1b1b1b; /* Text color */
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 40px;
+    z-index: 999;
+}
+
+.stat {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+}
+
+.stats {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 100px;
+}
+
+.stats-menu {
+    width: 100%;
+    list-style: none;
+    margin-top: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.stat-image {
+    margin-left: 70px;
+}
+
+.stats-menu li {
+    margin: 10px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.stats-menu span {
+    font-weight: bold;
+}
+
+.stats-number {
+    color: black;
+    margin-bottom: 5px;
+}
+
+.stats-number + p {
+    font-size: 12px;
+    color: #777;
+}
+
+.my-divider {
+    border: 1px solid #5f5f5f;
+    margin: 10px 0;
+    height: 40%;
+}
+
+.p-inputgroup {
+    top: 200px;
+    margin: 0 auto;
+    width: 25%;
+    position: relative;
+    width: 500px; /* Set the width */
+    height: 45px;
+}
+
+.stat-image {
+    width: 60%;
+}
+
+.stat-image img {
+    width: 100%;
+}
+
+.my-input {
+    padding-left: 25px;
+    border: 1px solid #343a40; /* Light blue border */
+    border-radius: 15px;
+    border: 2px solid #2ECC71;
+    background-color: #292e33; /* Slightly lighter blue background */
+    padding: 6px 10px; /* Adjust padding for better alignment */
+    color: #ffffff; /* White text color */
+    font-size: 16px;
+}
+
+.p-button-warning {
+    background-color: #2ECC71; /* Green color */
+    border-color: #2ECC71; /* Green border (same as background) */
+    border-radius: 4px; /* Rounded corners */
+    color: white; /* White text color */
+    position: absolute; /* Position the button absolutely */
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    height: 100%;
+    width: 25%;
+    border-radius: 15px;
+    font-size: 16px;
+}
+.text h1 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+}
+
+.p-button-warning {
+    justify-content: center;
+}
+.nav-pic {
+    width: 50%; /* Reduce the width of the slider container */
+    margin: 0 auto; /* Center the slider container */
+}
+
+.nav-pic img {
+    height: 300px; /* Adjust the height of the images */
+    object-fit: cover; /* Ensure images cover the container without stretching */
+    width: 100%; /* Ensure images take full width of the container */
+    border-radius: 10px; /* Optional: add rounded corners */
+    box-shadow: 5px 5px 5px #616161; /* Keep the shadow */
+    margin-top: 5%;
+}
+

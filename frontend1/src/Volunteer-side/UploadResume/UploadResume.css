@@ -1,0 +1,79 @@
+.upload-resume {
+    margin: 1%;
+    padding: 0.7rem;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.upload-resume-heading {
+    color: #095a46;
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.upload-resume-text {
+    color: #095a46;
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.upload-resume-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    padding: 1.4rem;
+    border-radius: 10px;
+    box-shadow: 1px 2px 5px 5px rgba(222,217,217,0.75);
+    transition: 70ms ease;
+    transform: scale(1.02);
+}
+
+.custom-file-upload {
+    width: 150px;
+    height: 40px;
+    display: inline-block;
+    border-radius: 75px;
+    background-color: #4fb075;
+    color: white;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.custom-file-upload:hover {
+    background-color: #45a060;
+}
+
+.upload-resume-input {
+    display: none;
+}
+
+.upload-resume-button {
+    width: 100px;
+    height: 40px;
+    border-radius: 75px;
+    color: white;
+    font-size: 13px;
+    font-weight: 500;
+    background-color: #5BC17F;
+    transition: background-color 0.3s ease;
+}
+
+.upload-resume-button:hover {
+    background-color: #45a060;
+}
+
+.upload-resume-message {
+    margin-top: 20px;
+    color: #52c25c;
+    font-size: 1rem;
+    text-align: center;
+}
