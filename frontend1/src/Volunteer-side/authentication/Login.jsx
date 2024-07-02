@@ -1,58 +1,79 @@
-import React from 'react';
 import {
+    Alert,
+    AlertIcon,
     Box,
     Button,
     Flex,
     FormLabel,
     Heading,
+    Image,
     Input,
     Link,
     Stack,
+    Text,
 } from '@chakra-ui/react';
-import logoImage from "../../assets/logo.png";
-import { Formik, Form, useField } from "formik";
+import logoImage from "../../../assets/logo.png";
+import {Formik, Form, useField} from "formik";
 import * as Yup from 'yup';
-import { useNavigate } from "react-router-dom";
+import {useAuth} from "./AuthContext.jsx";
+import {errorNotification} from "./notification.js";
+import {useNavigate} from "react-router-dom";
+import {useEffect, useState} from "react";
+import {LeftOverlayPanel, Overlay, OverlayContainer, Paragraph, RightOverlayPanel, Title} from "../../Styles.js";
 
-const MyTextInput = ({ label, ...props }) => {
+const MyTextInput = ({label, ...props}) => {
+
     const [field, meta] = useField(props);
     return (
         <Box>
             <FormLabel htmlFor={props.id || props.name}>{label}</FormLabel>
-            <Input {...field} {...props} />
+            <Input className="text-input" {...field} {...props} />
             {meta.touched && meta.error ? (
-                <div>{meta.error}</div>
+                <Alert className="error" status={"error"} mt={2}>
+                    <AlertIcon/>
+                    {meta.error}
+                </Alert>
             ) : null}
         </Box>
     );
 };
 
 const LoginForm = () => {
+    const { login } = useAuth();
     const navigate = useNavigate();
 
     return (
         <Formik
-            initialValues={{ username: '', password: '' }}
+            validateOnMount={true}
             validationSchema={
                 Yup.object({
                     username: Yup.string()
-                        .email("Must be a valid email")
+                        .email("Must be valid email")
                         .required("Email is required"),
                     password: Yup.string()
+                        .max(20, "Password cannot be more than 20 characters")
                         .required("Password is required")
                 })
             }
-            onSubmit={(values, { setSubmitting }) => {
-                setTimeout(() => {
-                    alert(JSON.stringify(values, null, 2));
+            initialValues={{username: '', password: ''}}
+            onSubmit={(values, {setSubmitting}) => {
+                setSubmitting(true);
+                login(values).then(res => {
+                    navigate("/home")
+                    console.log("Successfully logged in");
+                }).catch(err => {
+                    errorNotification(
+                        err.code,
+                        err.response.data.message
+                    )
+                }).finally(() => {
                     setSubmitting(false);
-                    navigate("/home"); // Navigate only after successful form submission
-                }, 400);
+                })
             }}>
 
-            {({ isValid, isSubmitting }) => (
+            {({isValid, isSubmitting}) => (
                 <Form>
-                    <Stack spacing={4}>
+                    <Stack mt={15} spacing={15}>
                         <MyTextInput
                             label={"Email"}
                             name={"username"}
@@ -68,33 +89,65 @@ const LoginForm = () => {
 
                         <Button
                             type={"submit"}
-                            isDisabled={!isValid || isSubmitting}>
+                            disabled={!isValid || isSubmitting}>
                             Login
                         </Button>
                     </Stack>
                 </Form>
             )}
+
         </Formik>
-    );
-};
+    )
+}
 
 const Login = () => {
+    const [signIn, setSignIn] = useState(true);
+
+
+    const { customer } = useAuth();
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (customer) {
+            navigate("/dashboard/customers");
+        }
+    })
+
     return (
-        <Stack minH={'100vh'} direction={{ base: 'column', md: 'row' }}>
+        <Stack minH={'100vh'} direction={{base: 'column', md: 'row'}}>
             <Flex p={8} flex={1} alignItems={'center'} justifyContent={'center'}>
                 <Stack spacing={4} w={'full'} maxW={'md'}>
-                    <div style={{ position: 'absolute', top: '20px', left: '20px' }}>
-                        <img src={logoImage} alt="Logo" style={{ width: '100px', height: 'auto' }} />
+                    <div style={{position: 'absolute', top: '20px', left: '20px'}}>
+                        <img src={logoImage} alt="Logo" style={{width: '100px', height: 'auto'}}/>
                     </div>
                     <Heading fontSize={'2xl'} mb={15}>Sign in to your account</Heading>
-                    <LoginForm />
+                    <LoginForm/>
                     <Link color={"blue.500"} href={"/signup"}>
-                        Don't have an account? Sign up now.
+                        Dont have an account? Signup now.
                     </Link>
                 </Stack>
             </Flex>
+            <Flex
+                flex={1}
+                p={10}
+                flexDirection={"column"}
+                alignItems={"center"}
+                justifyContent={"center"}
+            >
+                <OverlayContainer signinIn={signIn}>
+                    <Overlay signinIn={signIn}>
+                        <RightOverlayPanel signinIn={signIn}>
+                            <Title>Welcome Back!</Title>
+                            <Paragraph>
+                                To keep connected with us please login with your personal info
+                            </Paragraph>
+                        </RightOverlayPanel>
+                    </Overlay>
+                </OverlayContainer>
+
+            </Flex>
         </Stack>
     );
-};
+}
 
 export default Login;
