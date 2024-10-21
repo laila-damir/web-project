@@ -1,8 +1,7 @@
 # Volunteer WebSite
 
 Welcome to the Volunteer WebSite! This application helps connect volunteers with organizations and events where they can contribute their time and skills for a good cause.
-## Made by:
-Laila DAMIR, Ilyas NGOU, Zakaria bahari, Issam hammani
+
 
 ## Problem Statement
 
